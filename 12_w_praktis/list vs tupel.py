@@ -1,0 +1,9 @@
+list=["a","b","c"]
+tuple=("a","b","c")
+print(list)
+print(tuple)
+print("==================================")
+list[0]="1"
+tuple[0]="1"
+print(list)
+print(tuple)
