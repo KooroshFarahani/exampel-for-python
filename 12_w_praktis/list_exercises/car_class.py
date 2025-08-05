@@ -7,7 +7,7 @@ class CAR:
         print(f"car barnd : {self.brand} \n color car : {self.color} \n make at {self.year} ")
     def start(self):
         print(f"car{self.brand} is started !!")
-
+    
 
 car_name = input("pleas enter the brand of car :")
 car_year = int(input("pleas enter the year of make this car :"))
