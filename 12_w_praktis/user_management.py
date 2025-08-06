@@ -11,7 +11,7 @@ class user():
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f" user name :{self.username} login at {now} welcome ")
         data = [['user name ',self.username],['email' , self.email],['password' , self.password],['time login',now],['admin' , self.admin]]
-        with open('log-user','a') as file:
+        with open('log-user.csv','a') as file:
             writer =csv.writer(file)
             writer.writerows(data)
 
