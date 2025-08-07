@@ -1,54 +1,44 @@
-import csv
+
 import os
 from datetime import datetime
 class user():
-    def __init__(self,username,email,password,admin):
+    def __init__(self,username,email,password,admin=False):
         self.username=username
         self.email=email
         self.password=password
         self.admin=admin
-    def login(self):
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f" user name :{self.username} login at {now} welcome ")
-        data = [['user name ',self.username],['email' , self.email],['password' , self.password],['time login',now],['admin' , self.admin]]
-        with open('log-user.csv','a') as file:
-            writer =csv.writer(file)
-            writer.writerows(data)
+        
 
+    def login(self):
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # get date and time 
+        print(f" user name :{self.username} login at {now} welcome ")
+        data = f" username : {self.username} \t email : {self.email} \t password : {self.password} \t admin : {self.admin} \n"
+
+        with open('log-user.txt','a') as file: # open file to write log login
+            file.write(data)
+        with open ('log-user.txt','r') as file:
+            read=file.read()
+            if self.username in read:
+                print ("user name is exist")
+            else :
+                print ("user name in not exist") 
             
     def singin(self):
         pass
     def AdminUser(self):
-        with open('log-user','r')as file:
-            reader=csv.reader(file)
-            for row in reader:
-                print(row)
-                if row == 'True' :
-                    print (f"user name : {self.username} is ADMIN")
-                else:
-                    print (f"user name : {self.username} is NOT ADMIN")
+        pass
 
     def delete_user(self):
         pass
 
 
-txt="1.login \n 2.admin user \n 3.ceart user"
-print (txt)
-operator=input("please enter the operator : ")
-if operator == "1":
-    username=input("user name :")
-    email=input("enter the email :")
-    password=input("enter your password :")
-    admin=input("if this user is admin enter true or false :")
-    user1=user(username,email,password,admin)
-    user1.login()
-    print("-----------------------------------")
-    user1.AdminUser()
-elif operator == "2":
-    pass
-elif operator=="3":
-    pass
+txt="1.login \n 2.sining \n 3.show user"
 
+username = input("enter username :")
+password = input("enter password :")
+email = input("enter the email :")
+admin=bool(input("True or False for admin"))
     
-    
-    
+user1=user(username,email,password,admin)
+
+user1.login()
