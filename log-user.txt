@@ -1,0 +1,3 @@
+ username : k 	 email : k@ 	 password : 123 	 admin : True 
+ username : k 	 email : k@ 	 password : 123 	 admin : True 
+ username : k2 	 email : k3 	 password : 456 	 admin : True 
