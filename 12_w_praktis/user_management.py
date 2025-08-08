@@ -3,7 +3,6 @@ import os
 from datetime import datetime
 class user():
     def __init__(self,username,email,password,admin=False):
-       
         self.username=username
         self.email=email
         self.password=password
@@ -28,11 +27,12 @@ class user():
             else:
                 print ("user name in not exist") 
                 return False
-    def AdminUser(self):
-        pass
+    def ShowUser():
+        with open('log-user.txt','r')as file:
+            read=file.read()
+            print(read)
 
-    def delete_user(self):
-        pass
+     
 
 
 txt="1.singin \n 2.login \n 3.show user"
@@ -56,4 +56,4 @@ elif operator=="2":
     else:
         user.login(username,password)
 else:
-    pass
+    user.ShowUser()
