@@ -1,5 +1,5 @@
 import argparse
-
+import os 
 def ChangNameFile():
     try:
 
@@ -8,8 +8,10 @@ def ChangNameFile():
         parser.add_argument("file",nargs="+",help="List of file names")
         # Optional arguments
         parser.add_argument("-u","--uppercase",action="store_true",help="Convert names to uppercase")
-        parser
+        parser.add_argument("-e","--exists",action="store_true",help="show exist file",default="*.txt")
 
+       
+        
         arg=parser.parse_args()
 
 
@@ -17,6 +19,9 @@ def ChangNameFile():
             if arg.uppercase:
                 name = file.upper()
                 print(f"name : {name}\nLength : {len(file)}")
+            elif arg.exists:
+                name = file.upper()
+                print(f"name : {name}\nLength : {len(file)}\nexist:{os.path.exists(file)}")
             else:
                 print (f"file:{file}")
     except Exception as e:
