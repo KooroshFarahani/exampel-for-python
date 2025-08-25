@@ -1,22 +1,32 @@
 import argparse
+
 def PowerNumber():
     try:
-        parser=argparse.ArgumentParser(description="Calculate power of a number")
-        parser.add_argument("b","base",type=float,help="Base number")
-        parser.add_argument("e","exponent",type=float,help="Exponent number")
-        parser.add_argument("-v","--verbos",action="store_true",help="Show verbose output")
-        parser.add_argument("-r","--round",action="store_true",type=int,help="Number of decimals",default=2)
+        parser = argparse.ArgumentParser(description="Calculate power of a number")
+        
+        # Positional arguments
+        parser.add_argument("base", type=float, help="Base number")
+        parser.add_argument("exponent", type=float, help="Exponent number")
+        
+        # Optional arguments
+        parser.add_argument("-v", "--verbose", action="store_true", help="Show verbose output")
+        parser.add_argument("-r", "--round", type=int, help="Number of decimal places", default=None)  # None means no rounding
 
-        arg=parser.parse_args()
+        args = parser.parse_args()
 
-        result=arg.base**arg.exponent
+        result = args.base ** args.exponent
 
-        if arg.verbos:
+        # Apply rounding if specified
+        if args.round is not None:
+            result = round(result, args.round)
 
-            print(f"Calculating {arg.base} raised to the power of {arg.exponent}...")
+        if args.verbose:
+            print(f"Calculating {args.base} raised to the power of {args.exponent}...")
             print(f"Result: {result}")
         else:
-            print(f"Result: {result}") 
-    except:
-        print("your input is not valid")
+            print(f"Result: {result}")
+
+    except Exception as e:
+        print("Your input is not valid:", e)
+
 PowerNumber()
